@@ -51,8 +51,8 @@ import java.util.List;
 @Autonomous(name = "FTC Wires Autonomous Mode", group = "00-Autonomous", preselectTeleOp = "FTC Wires TeleOp")
 public class FTCWiresAutonomous extends LinearOpMode {
 
-    public static String TEAM_NAME = "EDIT TEAM NAME"; //TODO: Enter team Name
-    public static int TEAM_NUMBER = 0; //TODO: Enter team Number
+    public static String TEAM_NAME = "Coach"; //TODO: Enter team Name
+    public static int TEAM_NUMBER = 99999; //TODO: Enter team Number
 
     private static final boolean USE_WEBCAM = true;  // true for webcam, false for phone camera
 
@@ -130,16 +130,17 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 drive = new MecanumDrive(hardwareMap, initPose);
                 switch(identifiedSpikeMarkLocation){
                     case LEFT:
-                        dropPurplePixelPose = new Pose2d(26, 8, Math.toRadians(0));
+                        dropPurplePixelPose = new Pose2d(30, 0, Math.toRadians(0));
                         dropYellowPixelPose = new Pose2d(23, 36, Math.toRadians(-90));
                         break;
                     case MIDDLE:
                         dropPurplePixelPose = new Pose2d(30, 3, Math.toRadians(0));
-                        dropYellowPixelPose = new Pose2d(30, 36,  Math.toRadians(-90));
+                       dropYellowPixelPose = new Pose2d(30, 36,  Math.toRadians(-90));
                         break;
                     case RIGHT:
-                        dropPurplePixelPose = new Pose2d(30, -9, Math.toRadians(-45));
-                        dropYellowPixelPose = new Pose2d(37, 36, Math.toRadians(-90));
+                        dropPurplePixelPose = new Pose2d(30, 0, Math.toRadians(-45));
+                        //dropPurplePixelPose = new Pose2d(30, -9, Math.toRadians(-45));
+                       dropYellowPixelPose = new Pose2d(37, 36, Math.toRadians(-90));
                         break;
                 }
                 midwayPose1 = new Pose2d(14, 13, Math.toRadians(-45));
@@ -232,7 +233,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 drive.actionBuilder(drive.pose)
                         .strafeToLinearHeading(midwayPose1.position, midwayPose1.heading)
                         .build());
-
+/*
         //For Blue Right and Red Left, intake pixel from stack
         if (startPosition == START_POSITION.BLUE_RIGHT ||
                 startPosition == START_POSITION.RED_LEFT) {
@@ -264,13 +265,14 @@ public class FTCWiresAutonomous extends LinearOpMode {
 
         //TODO : Code to drop Pixel on Backdrop
         safeWaitSeconds(1);
-
+   */
         //Move robot to park in Backstage
         Actions.runBlocking(
                 drive.actionBuilder(drive.pose)
                         .strafeToLinearHeading(parkPose.position, parkPose.heading)
                         //.splineToLinearHeading(parkPose,0)
                         .build());
+
     }
 
 
